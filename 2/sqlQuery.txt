@@ -1,0 +1,38 @@
+/* Проверял на sqlite */
+/* 1-й способ */
+
+WITH c AS (
+    SELECT 1 as n
+    UNION ALL
+    SELECT n+1 FROM c WHERE n < 12)
+SELECT
+    n as month_number,
+    substr(strftime('%Y-%m-%d', 'now', 'start of year', '+' || n || ' month', '-1 day'), 9, 2) as days_in_month
+FROM c;
+
+
+/* 2-й способ */
+
+SELECT 1 AS month_number, substr(strftime('%Y-%m-%d', 'now', 'start of year', '+1 month', '-1 day'), 9, 2) as days_in_month
+UNION ALL
+SELECT 2 as month_number, substr(strftime('%Y-%m-%d', 'now', 'start of year', '+2 month', '-1 day'), 9, 2) as days_in_month
+UNION ALL
+SELECT 3 as month_number, substr(strftime('%Y-%m-%d', 'now', 'start of year', '+3 month', '-1 day'), 9, 2) as days_in_month
+UNION ALL
+SELECT 4 as month_number, substr(strftime('%Y-%m-%d', 'now', 'start of year', '+4 month', '-1 day'), 9, 2) as days_in_month
+UNION ALL
+SELECT 5 as month_number, substr(strftime('%Y-%m-%d', 'now', 'start of year', '+5 month', '-1 day'), 9, 2) as days_in_month
+UNION ALL
+SELECT 6 as month_number, substr(strftime('%Y-%m-%d', 'now', 'start of year', '+6 month', '-1 day'), 9, 2) as days_in_month
+UNION ALL
+SELECT 7 as month_number, substr(strftime('%Y-%m-%d', 'now', 'start of year', '+7 month', '-1 day'), 9, 2) as days_in_month
+UNION ALL
+SELECT 8 as month_number, substr(strftime('%Y-%m-%d', 'now', 'start of year', '+8 month', '-1 day'), 9, 2) as days_in_month
+UNION ALL
+SELECT 9 as month_number, substr(strftime('%Y-%m-%d', 'now', 'start of year', '+9 month', '-1 day'), 9, 2) as days_in_month
+UNION ALL
+SELECT 10 as month_number, substr(strftime('%Y-%m-%d', 'now', 'start of year', '+10 month', '-1 day'), 9, 2) as days_in_month
+UNION ALL
+SELECT 11 as month_number, substr(strftime('%Y-%m-%d', 'now', 'start of year', '+11 month', '-1 day'), 9, 2) as days_in_month
+UNION ALL
+SELECT 12 as month_number, substr(strftime('%Y-%m-%d', 'now', 'start of year', '+12 month', '-1 day'), 9, 2) as days_in_month
